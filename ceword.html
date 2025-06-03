@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CE Words - Click to Hear</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    button {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Click a CE word to hear it</h2>
+  <div id="word-list"></div>
+
+  <script>
+    const words = [
+      "police", "office", "price", "juice", "piece",
+      "face", "place", "practice", "dance", "science",
+      "sentence", "advice", "service", "rice", "space",
+      "voice", "choice", "notice", "surface", "device"
+    ];
+
+    const container = document.getElementById("word-list");
+
+    words.forEach(word => {
+      const button = document.createElement("button");
+      button.textContent = word;
+      button.onclick = () => {
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = "en-US";
+        speechSynthesis.speak(utterance);
+      };
+      container.appendChild(button);
+    });
+  </script>
+</body>
+</html>
